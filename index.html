@@ -15,46 +15,70 @@
 <script src = "node_modules/angular-messages/angular-messages.min.js"></script>
 <script src = "node_modules/angular-resource/angular-resource.js"></script>
 <script src = "node_modules/angular-route/angular-route.js"></script>
+<script src = "node_modules/jsnetworkx.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
 
 <script src = "mainController.js"></script>
 <script src = "component/NorCalHome/norCalHome.js"></script>
+<link rel="stylesheet" href="component/NorCalHome/norCalHome.css">
+
+<script src = "component/clinicalApps/clinicalApps.js"></script>
+
+
+<script src = "component/visualization/visualization.js"></script>
+<link rel="stylesheet" href="component/visualization/visualization.css">
+
+<script src = "component/visualization/consult.js"></script>
+<link rel="stylesheet" href="component/visualization/consult.css">
+
 
 
 <body layout = "column">
-  <md-toolbar layout = "row"  style="background-color: #202eaa" >
-    <h2 class="md-toolbar" layout-align = "center center">
+  <md-toolbar layout = "column"  style="background-color: #202eaa" >
+    <h2 flex = "" class="md-toolbar" layout-align = "center center">
      Northern California Health Care System Clinical Informatics 
-    </h2>
-    <h5 class = "md-toolbar"> about</h5>
+  
+    <br>
+    <md-button class ="md-raised md-accent " aria-label="about">About</md-button>
+    <md-button class="md-raised md-accent " aria-label="The team">
+    The Team
+   </md-button>
+  </h2>
   </md-toolbar>
 <div ng-app="NorCalApp" ng-controller="MainController">
-   <!--
-    <p ng-repeat = "item in intake.items">
-      {{item.question}}
-      
-      <md-radio-group ng-model = "item.selected">
-        <md-radio-button ng-value = "0" > No</md-radio-button>
-        <md-radio-button ng-value = "1" > Yes</md-radio-button>
-     
-      {{item.selected}}
-    </md-radio-group>
-    </p>
-  <md-button ng-click = "update()"> Show me what  you got </md-button>
-
-</div>
--->
+ 
 <div class = "container" flex layout = "row">
   <md-sidenav md-is-locked-open = "true" class = "md-white-frame-z2">
-  sidenav
-
+  <div ng-include = "'/component/clinicalApps/clinicalApps.html'" ng-controller="ClinicalAppsController"></div>
+  
   </md-sidenav>
  <md-content flex id = "content">
-  main window
+
    <div ng-view></div>
  </md-content>
   
+ <div id = "canvas"></div>
 
 
 </div>
+
+<script>
+    var G = new jsnx.Graph();
+
+    G.addWeightedEdgesFrom([[2,3,10]]);
+    G.addStar([3,4,5,6], {weight: 5}); 
+    G.addStar([2,1,0,-1], {weight: 3});
+    console.log(G)
+/*
+   jsnx.draw(G, {
+        element: '#canvas',  
+        weighted: true,
+        edgeStyle: {
+            'stroke-width': 10
+        }
+   });
+   */
+ </script>
 </body>
 </html>

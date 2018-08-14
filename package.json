@@ -10,7 +10,8 @@
     "angular-material": "^1.1.9",
     "angular-messages": "^1.7.2",
     "angular-resource": "^1.7.2",
-    "angular-route": "^1.7.2"
+    "angular-route": "^1.7.2",
+    "jsnetworkx": "^0.3.4"
   },
   "devDependencies": {},
   "scripts": {

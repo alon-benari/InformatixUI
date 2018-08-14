@@ -7,17 +7,24 @@ norCalApp.config(['$routeProvider',
         templateUrl:'component/norCalHome/norCalHome.html',
         controller:'NorCalHomeController'
       }).
+      when('/Visualization',{
+        templateUrl:'component/visualization/visualization.html',
+        controller:'VisualizationController'
+      }).
+      when('/ConsultNetwork',{
+        templateUrl:'component/visualization/consult.html',
+        controller:'ConsultNetworkController'
+      }).
+
       otherwise({
         redirectTo:'/home'
       })
 
 
   }])
+
 norCalApp.controller('MainController',['$scope', function($scope) {
-    $scope.firstname = "John";
-    $scope.lastname = "Doe"; 
-    
-    console.log('running')
+      console.log('running')
   
     $scope.main = {}
     $scope.main.CliniApps = ['NorCal Clinical Apps']
